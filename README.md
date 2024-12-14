@@ -15,7 +15,7 @@ a user directory app for search and view users
 
 ## apk installs
 
-/apk/
+/apk/app.apk
 in apk folder the apk file is present you can directly install it on your android devices
 
 
