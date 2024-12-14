@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.huzaif_sofi.user_dic"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -27,6 +28,14 @@
     "plugins": [
       "expo-font",
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "e2810928-be5c-4ba8-b953-c32933c04509"
+      }
+    }
   }
 }

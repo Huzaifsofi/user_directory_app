@@ -54,21 +54,40 @@ export default function UserMain() {
         <View>
           <Text style={styles.info_title}>Address</Text>
           <View>
-            <Text style={styles.info_sub_key}>street: <Text style={styles.info_sub_value}>{user.address['street']}</Text></Text>
-            <Text style={styles.info_sub_key}>suite: <Text style={styles.info_sub_value}>{user.address['suite']}</Text></Text>
-            <Text style={styles.info_sub_key}>city: <Text style={styles.info_sub_value}>{user.address['city']}</Text></Text>
-            <Text style={styles.info_sub_key}>zipcode: <Text style={styles.info_sub_value}>{user.address['zipcode']}</Text></Text>
+          {user.address && Object.entries(user.address).map(([key, value]) => {
+            if (key === 'geo' && value) {
+              // Handle 'geo' (lat, lng) as a separate case
+              return (
+                <Text style={styles.info_sub_key} key={key}>
+                  {`${key}: `}
+                  <Text style={styles.info_sub_value}>
+                    {`Lat: ${value.lat}, Lng: ${value.lng}`}
+                  </Text>
+                </Text>
+              );
+            }
+            return (
+              <Text style={styles.info_sub_key} key={key}>
+                {`${key}: `}
+                <Text style={styles.info_sub_value}>{value}</Text>
+              </Text>
+            );
+          })}
           </View>
         </View>
 
         <View>
           <Text style={styles.info_title}>Company</Text>
           <View>
-            <Text style={styles.info_sub_key}>name: <Text style={styles.info_sub_value}>{user.company['name']}</Text></Text>
-            <Text style={styles.info_sub_key}>catchPhrase: <Text style={styles.info_sub_value}>{user.company['catchPhrase']}</Text></Text>
-            <Text style={styles.info_sub_key}>bs: <Text style={styles.info_sub_value}>{user.company['bs']}</Text></Text>
+            {user.company && Object.entries(user.company).map(([key, value]) => (
+              <Text style={styles.info_sub_key} key={key}>
+                {`${key}: `}
+                <Text style={styles.info_sub_value}>{value}</Text>
+              </Text>
+            ))}
           </View>
         </View>
+
       </View>
     </LinearGradient>
   );
